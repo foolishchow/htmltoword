@@ -152,6 +152,21 @@
         <xsl:variable name="cell-bg" select="str:tokenize(substring-after(@class, 'ms-fill-'), ' ')[1]"/>
         <w:shd w:val="clear" w:color="auto" w:fill="{$cell-bg}" />
       </xsl:if>
+      <xsl:if test="@colspan > 1">
+        <w:hmerge w:val="restart"></w:hmerge>
+      </xsl:if>
+      <xsl:if test="@rowspan > 1">
+        <w:vmerge w:val="restart"></w:vmerge>
+      </xsl:if>
+      <xsl:if test="contains(@vmerge,'1')">
+        <w:vmerge></w:vmerge>
+      </xsl:if>
+      <xsl:if test="contains(@vmerge,'2')">
+        <w:vmerge w:val="continue"></w:vmerge>
+      </xsl:if>
+      <xsl:if test="string-length(@hmerge)>0">
+        <w:hmerge></w:hmerge>
+      </xsl:if>
     </w:tcPr>
   </xsl:template>
 

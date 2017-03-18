@@ -1,7 +1,7 @@
 module Htmltoword
   class Document
     include XSLTHelper
-
+    include TableHelper
     class << self
       include TemplatesHelper
       def create(content, template_name = nil, extras = false)
